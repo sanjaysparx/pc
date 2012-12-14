@@ -8,7 +8,7 @@ $get_current_year = (get_query_var('year')) ? get_query_var('year') : "";
 <input type="hidden" name="current-year" id="current-year" value="<?php echo $get_current_year; ?>" />
 <input type="hidden" name="curr-year" id="curr-year" value="<?php echo date('Y'); ?>" />
 <h3 class="h2">News and Events</h3>
-<ul class="nav-secondary">
+<ul class="nav-secondary cat-archive">
 <?php 
    $current_cat_id = get_query_var('cat');
    $categories = get_categories('title_li&orderby=ID&hide_empty=0');
@@ -17,14 +17,21 @@ $get_current_year = (get_query_var('year')) ? get_query_var('year') : "";
 		$term_id = $category->term_id;
 		$cat_ID = $category->cat_ID;
 		$cat_url = get_category_link( $cat_ID );
+		$archive = wp_get_archives('type=yearly&echo=0&cat='.$cat_ID);
 		$current_cat = "";
 		if($current_cat_id == $cat_ID){
-		$current_cat = 'class="current-cat"'; 
+			$current_cat = 'class="current-cat"'; 
 		}
-		
+		$collapse_expand = '';
+   if($current_cat_id == $cat_ID && $archive){
+			$collapse_expand = '<span class="collapsable"></span>'; 
+		}else if($archive){
+			$collapse_expand = '<span class="expandable"></span>'; 
+		}else if(!$archive){
+			$collapse_expand = '<span class="no-archive"></span>'; 
+		}
 		$cat_str = "";
-		$cat_str .= '<li '.$current_cat.'><a title="View all posts filed under '.$cat_name.'" href="'.$cat_url.'">'.$cat_name.'</a>';
-		$archive = wp_get_archives('type=yearly&echo=0&cat='.$cat_ID);
+		$cat_str .= '<li '.$current_cat.'>'.$collapse_expand.'<a title="View all posts filed under '.$cat_name.'" href="'.$cat_url.'">'.$cat_name.'</a>';
 		if($archive){
 			$cat_str .= '<ul class="children archive">'.$archive.'</ul>';
 		}

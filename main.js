@@ -1,5 +1,3 @@
-
-
 /* ==========================================================================
    GLOBAL NAMESPACE - Site
    ========================================================================== */
@@ -687,4 +685,25 @@ $(document).ready(function() {
     $('.page-pdf-download .fancybox-style').css({'left':'0','width':'100%', 'height':'560px'});
     $('.page-pdf-download .hide-noscript').css('display','block');
     $('.page-pdf-download #wsjpecrga').css('display','none');
+});
+
+/* Adding collapsible archive for news section */
+
+$(document).ready(function(){
+	$('.cat-archive.nav-secondary > li span').click(function(){
+		if($(this).hasClass('collapsable')){
+			$(this).parent('li').children('.children').slideUp('slow');
+			$(this).removeClass('collapsable').addClass('expandable');
+		}else if($(this).hasClass('expandable')){
+			$(this).parent('li').children('.children').slideDown('slow');
+			$(this).removeClass('expandable').addClass('collapsable');
+		}
+	})
+	$('.cat-archive.nav-secondary > li ul.archive').each(function(){
+		//if($(this).html().trim().length == 0){
+		//
+		if ( $.trim($(this).html()).length === 0 ) {
+			$(this).parent('li').children('span').removeClass('collapsable').removeClass('expandable').addClass('no-archive');
+		}
+	})
 });

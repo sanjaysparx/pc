@@ -1,10 +1,6 @@
 <?php 
-
-
 include 'script_css_functions.php';
-
 //include 'shortcode_functions.php';
-
 /*
  * 	Register  Navigations
  */
@@ -14,22 +10,17 @@ include 'script_css_functions.php';
  register_nav_menus( array(
 	'mainnav' => 'Main  Nav Menu'
 ) );
-
 register_nav_menus( array(
 	'footernav' => 'Footer Nav Menu'
 ) );
-
 /*
  * 	WP walker class for the primary navigation
  */
-
 include_once( TEMPLATEPATH."/includes/primary-menu-walker-class.php" ); 
-
 /*
  * 	Register Widget
  */
- 
- register_sidebar(array(
+register_sidebar(array(
 'name'=> 'login',
 
  'description'   => 'login',
@@ -39,7 +30,6 @@ include_once( TEMPLATEPATH."/includes/primary-menu-walker-class.php" );
 'after_title' => '</h2>',
  )); 
  /*
-
 /*
  * 	Add support for Featured Images
  */
@@ -385,7 +375,7 @@ function excerpt_chars($content, $limit) {
 }
 
 /*
- * Adding shortcode to handle PDF downloads via form
+ * Function to add shortcode to handle PDF downloads via form
  */
 
 add_shortcode('prcservepdf', 'procserve_pdf_link');
@@ -397,10 +387,19 @@ function procserve_pdf_link($atts){
                 'image_url' => '',
                 'height' => '',
                 'width' => '',
-                'download_id' => '',
-    	        'titletext' => ''
+                'download_id' => ''
 	), $atts ) );
-    $link_inner_html = trim($image_url)?'<img height="'.$height.'" width="'.$width.'" src="'.$image_url.'" alt="'.$titletext.'" />':$linktext;
-    $link = '<a class="fancybox fancybox.iframe"  style="height:'.$height.'px; width:'.$width.'px; display:block;" href="'.get_permalink('3065').'?id='.base64_encode($download_id).'" title="'.$titletext.'">'.$link_inner_html.'</a>';
+    $link_inner_html = trim($image_url)?'<img height="'.$height.'" width="'.$width.'" src="'.$image_url.'" alt="'.$linktext.'" />':$linktext;
+    $link = '<a class="fancybox fancybox.iframe"  style="height:'.$height.'px; width:'.$width.'px; display:block;" href="'.get_permalink('2879').'?d_id='.base64_encode($download_id).'" title="'.$linktext.'">'.$link_inner_html.'</a>';
     return $link;
 }
+
+/*
+ * Function to handle highlighter shortcode
+ * uses [highlightbox]content[/highlightbox]
+ */
+add_shortcode('highlightbox', 'procserve_highlight_box');
+function procserve_highlight_box($atts, $content = null) {
+    return '<div class="highlight">' . $content . '</div>';
+}
+    

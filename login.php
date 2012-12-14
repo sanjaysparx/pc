@@ -40,6 +40,11 @@ Template Name: Login
                     </div> --> 
                </div>
                <div class="rht">
+               <ul>
+               <?php if(get_field('section_logo')){?><li style="text-align: center;"><img title="support-login-1" src="<?php the_field('section_logo');?>" alt="Support Login" width="154" height="84"></li><?php }?>
+               <?php if(get_field('login_link')){?><li><a href="<?php the_field('login_link');?>" class="btn contact-login contact-support" target="_blank"><?php echo get_field('login_link_text')?get_field('login_link_text'):'Customer Support Login'; ?></a></li><?php }?>
+               </ul>
+               <hr />
                 <?php 
                 	$rightsidebar = get_post_meta($post->ID, 'right_sidebar', true);
                 	echo $rightsidebar = wpautop( $rightsidebar );

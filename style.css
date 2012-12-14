@@ -1362,13 +1362,16 @@ tr:nth-child(2n) td {
 .nav-secondary li.current_page_item ul.children, .nav-secondary li.current-cat ul.children{
     display:block;
 }
-.nav-secondary ul.children{ list-style:none; margin-left:0px;}
+.nav-secondary ul.children{ list-style:none; margin-left:0px; font-size:0.9em}
 .nav-secondary ul.children li{ border:none; margin-bottom:3px;}
 .nav-secondary ul.children li a , .nav-secondary ul.children li.current_page_item a { padding-left:17px; color:#666666;}
 .nav-secondary ul.children li a:hover{background:#ebebeb; color:#5bbfc8;}
 .nav-secondary ul.children li.current_page_item a{background:#ebebeb; color:#FF0033;} 
 
-
+.cat-archive.nav-secondary > li span.collapsable {background:url(images/opn-collapse.png) -54px -1px no-repeat; height: 25px; width: 15px; float: left; cursor: pointer; margin-right:5px}
+.cat-archive.nav-secondary > li span.expandable {background:url(images/opn-collapse.png) -11px -1px no-repeat; height: 25px; width: 15px; float: left; cursor: pointer; margin-right:5px}
+.cat-archive.nav-secondary > li span.expandable:hover {background:url(images/opn-collapse.png) -32px -1px no-repeat}
+.cat-archive.nav-secondary > li span.no-archive {height: 25px; width: 15px; float: left; margin-right:5px}
 
 .site-updates {
     background-color: #122528;
@@ -1439,7 +1442,7 @@ div.site-updates .gsom-optin-radiogroup {
 /* ####################################### */
 /* line 9, ../sass/_buttons.scss */
 .btn, .site-updates .gsom-optin-radiogroup input {
-    color: #FFF;
+    color: #FFF !important;
     display: inline-block;
     *vertical-align: auto;
     zoom: 1;
@@ -1458,7 +1461,6 @@ div.site-updates .gsom-optin-radiogroup {
     box-shadow: inset rgba(255, 255, 255, 0.3) 0 0 0 1px;
     text-shadow: rgba(0, 0, 0, 0.2) 0 -1px 1px;
 
-    background: #ed1d59;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.25))), #ed1d59;
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25)), #ed1d59;
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25)), #ed1d59;
@@ -3494,12 +3496,12 @@ body {
 
 
 .contact-login {
-    margin-top: 25px;
+    margin-top: 25px;url(/wp-content/themes/procserve/images/opn-collapse.png) -11px -1px no-repeat
     margin-left: 10px;
     border: 0;
 
 }
-
+.contact-login.contact-support{margin-top:0px; line-height:23px}
 .lt-ie7 .contact-login {
     height: 32px;
     line-height: 32px;
@@ -3876,7 +3878,7 @@ ul.flex-direction-nav .flex-next:focus {
 /* line 307, ../sass/site/_page.scss */
 .action-buttons .btn {
     text-align: left;
-    line-height: normal;
+    line-height: 1;
     padding: 8px 15px;
 
 }
@@ -3885,19 +3887,19 @@ ul.flex-direction-nav .flex-next:focus {
     vertical-align: top;
     display: inline-block;
     position: relative;
-    top: 4px;
+    top: 6px;
 }
 
 .action-button-demo .btn span {
-    top: 5px;
+    top: 8px;
 }
 
 .lt-ie8 .action-button-demo .btn span {
-    top: 5px;
+    top: 6px;
 }
 
 .lt-ie8 .action-button-phone .btn span {
-    top: 3px;
+    top: 4px;
 }
 
 
@@ -4060,12 +4062,10 @@ span.gsom-required-msg {
 .contentinfo-nav a:hover, .contentinfo-nav a:focus {
     text-decoration: underline; }
 /* line 455, ../sass/site/_page.scss */
-.contentinfo-nav li:after {
+.contentinfo-nav a:after {
     content: "/";
     display: inline-block;
-    padding-left: 15px;
-    text-decoration: none;
-}
+    padding-left: 15px; }
 
 /* ============================================================ */
 /* ============================================================ */
@@ -5392,3 +5392,7 @@ span.wpcf7-not-valid-tip {display: none;}
 .page-pdf-download .main .wpcf7-submit{float: left}
 .page-pdf-download div.wpcf7 img.ajax-loader{float: right; margin-top: 12px}
 .page-nav-styl{padding-bottom: 24px;}
+
+/* highlight box style */
+
+.highlight {background: #d6edb5; padding: 10px; border-radius:3px}
